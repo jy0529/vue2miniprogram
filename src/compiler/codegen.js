@@ -5,11 +5,14 @@ function wxTag(astNode) {
 }
 
 function wxFor(astNode) {
-    if (astNode.attrsMap && astNode.attrsMap[mapping.for]) {
-        let v = astNode.attrsMap[mapping.for];
+    if (astNode.attrsMap && astNode.attrsMap[mapping.list.for]) {
+        let v = astNode.attrsMap[mapping.list.for];
         let s = `wx:for="{{ ${v.forItems} }}"`;
         if (v.item) {
             s += ` wx:for-item="${v.item}"`;
+        }
+        if (v.key) {
+            s += ` wx:key="${v.key}"`;
         }
         if (v.index) {
             s += ` wx-for-index="${v.index}"`;

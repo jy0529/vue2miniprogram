@@ -7,10 +7,11 @@ const WxASTVisitor = {
         node.tag = mapping.tags[tag];
     },
     for(node) {
-        node.attrsMap[mapping.for] = {
+        node.attrsMap[mapping.list.for] = {
             forItems: node.for, 
             item: node.alias,
             index: node.iterator1,
+            key: node.key,
         };
     },
     ifCondition(node) {

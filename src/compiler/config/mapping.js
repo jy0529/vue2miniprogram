@@ -4,7 +4,10 @@ const mapping = {
         'div': 'view',
         'span': 'text',
     },
-    for: 'wx:for',
+    list: {
+        for: 'wx:for',
+        key: 'wx:key'
+    },
     ifCondition: {
         'v-if': 'wx:if',
         'v-else': 'wx:else',
