@@ -1,0 +1,26 @@
+{
+  "name": "vue2miniprogram",
+  "version": "1.0.0",
+  "description": "a simple wechat miniprogram convertor by vue",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jy0529/vue2miniprogram.git"
+  },
+  "author": "Jy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jy0529/vue2miniprogram/issues"
+  },
+  "homepage": "https://github.com/jy0529/vue2miniprogram#readme",
+  "devDependencies": {
+    "@vue/component-compiler-utils": "^3.2.0",
+    "vue-template-compiler": "^2.6.12"
+  }
+}
