@@ -1,0 +1,18 @@
+{
+    "name": "vuemp",
+    "version": "1.0.0",
+    "main": "index.js",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/jy0529/vue2miniprogram"
+    },
+    "keywords": [
+        "vue",
+        "compiler",
+        "miniprogram"
+    ],
+    "bugs": {
+        "url": "https://github.com/jy0529/vue2miniprogram/issues"
+    },
+    "author": "Jy <1041207253@qq.com>"
+}
