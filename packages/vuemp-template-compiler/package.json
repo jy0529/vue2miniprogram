@@ -1,0 +1,20 @@
+{
+  "name": "vuemp-template-compiler",
+  "version": "0.1.0",
+  "description": "vue2miniprogram convertor",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "vue",
+    "miniprogram",
+    "compiler"
+  ],
+  "author": "Jy",
+  "license": "ISC",
+  "devDependencies": {
+    "@vue/component-compiler-utils": "^3.2.0",
+    "vue-template-compiler": "^2.6.12"
+  }
+}
