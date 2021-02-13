@@ -4,10 +4,10 @@
  * Released under the MIT License.
  */
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
-  typeof define === 'function' && define.amd ? define(factory) :
-  (global = global || self, global.Vue = factory());
-}(this, function () { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('assert')) :
+  typeof define === 'function' && define.amd ? define(['assert'], factory) :
+  (global = global || self, global.Vue = factory(global.assert));
+}(this, function (assert) { 'use strict';
 
   /*  */
 
@@ -6428,34 +6428,37 @@
     blur: ['change', 'blur'],
   };
 
-  function getData$1(vm) {
-    var data = {};
+  function vnodeToData(vm) {
+    var vnode = vm._vnode;
 
-    var dataSources = [
-      '$data',
-      '$props' ];
-
-    for(var i = 0; i < dataSources.length; i++) {
-      var $ds = dataSources[i];
-
-      if (vm[$ds] !== undefined) {
-        Object.keys(vm.$data).reduce(function (acc, k) {
-          data[k] = cloneDeep(vm.$data[k]);
-        }, {});
+    function createDataTree(vnode) {
+      var node = {};
+      node.tag = vnode.tag;
+      node.text = vnode.text;
+      node.key = vnode.key;
+      node.data = cloneDeep(vnode.data);
+      
+      if (vnode.children) {
+        node.children = [];
+        for(var i = 0; i < vnode.children.length; i++) {
+          node.children.push(createDataTree(vnode.children[i]));
+        }
       }
+
+      return node;
     }
 
-    return data;
+    return createDataTree(vnode);
   }
 
   function initDataToMP(page) {
-    page.setData({ $root: getData$1(this) });
+    page.setData({ $root: vnodeToData(this) });
   }
 
   function setDataToMp() {
     var page = this.$mp.page;
     if (this.$mp.mpType === 'page' && page) {
-      page.setData({ $root: getData$1(this) });
+      page.setData({ $root: vnodeToData(this) });
     }
   }
 

@@ -5,8 +5,7 @@ const { webpackConfig } = require('./webpack.config');
 const glob = require('glob');
 const fs = require('fs');
 const path = require('path');
-const { compile } = require('vuemp-compiler/index');
-
+const { compile, baseWXML, } = require('vuemp-compiler/index');
 
 function resolve(dir) {
     return path.join(__dirname, '..', dir)
@@ -23,6 +22,8 @@ function preBuild() {
             fs.writeFileSync(outputDir + 'main.wxml', wxml);
             fs.writeFileSync(outputDir + 'main.wxss', style);
         });
+    
+    fs.writeFileSync(outputDir + 'base.wxml', baseWXML);
 }
 
 function postBuild() {
