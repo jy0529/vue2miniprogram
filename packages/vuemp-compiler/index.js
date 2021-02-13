@@ -4,6 +4,7 @@ const { convert } = require('./convert');
 const { codegen } = require('./codegen');
 const { writeFile } = require('./output');
 const { preTransformASTNodeEvents } = require('./convert/events');
+const { baseWXML } = require('./baseWxml');
 
 function baseParse(source) {
     return parse({
@@ -60,7 +61,7 @@ function compile(source)  {
     // template
     const { wxast } = convert(ast);
     let { code: wxml } = codegen(wxast);
-    wxml = `<template is="0" data="{{ ...$root }}" />\n<template name="0">\n${wxml}\n</template>`;
+    wxml = `<import src="/base.wxml"/><template is="VUEMAX_TPL" data="{{$root: $root}}" />`
 
     return {
         wxml,
@@ -86,4 +87,5 @@ function output(compiled) {
 module.exports = {
     compile,
     output,
+    baseWXML,
 }
