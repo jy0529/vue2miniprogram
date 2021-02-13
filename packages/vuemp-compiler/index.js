@@ -4,6 +4,7 @@ const { compileTemplate, parse, compileStyle } = require('@vue/component-compile
 const { convert } = require('./convert');
 const { codegen } = require('./codegen');
 const { writeFile } = require('./output');
+const { preTransformASTNodeEvents } = require('./convert/events');
 
 function baseParse(source) {
     return parse({
@@ -20,7 +21,17 @@ function compile(source)  {
     const { ast, code: renderCode, } = compileTemplate({
         source: template.content,
         compiler,
-    });
+        compilerOptions: {
+            modules: [
+                {
+                    preTransformNode: function(ASTNode) {
+                        preTransformASTNodeEvents(ASTNode);
+                        return ASTNode;
+                    },
+                }
+            ]
+        }
+    }); 
 
     // style
     const { code: styleCode } = compileStyle({
