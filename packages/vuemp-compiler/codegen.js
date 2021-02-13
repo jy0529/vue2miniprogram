@@ -46,7 +46,8 @@ function events(astNode) {
         for(let e in astNode.events) {
             if (e in mapping.events) {
                 let eventName = mapping.events[e];
-                s += `${eventName}="{{${astNode.events[eventName].value}}}"`;
+                s += `${eventName}="${astNode.events[eventName].value}"`;
+                s += ` data-eventid="${astNode.events[eventName].eventid}"`;
             }
         }
         return s;

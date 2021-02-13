@@ -2,9 +2,9 @@
   <div class="color-red">
     Hello World
 
-    <div v-for="(a, i) in items" :key="a">{{ i }}</div>
+    <div v-for="(a, i) in items" :key="a">{{ a }}</div>
 
-    <div @click="clickHandler"></div>
+    <div @click="clickHandler">clickHandler</div>
   </div>
 </template>
 

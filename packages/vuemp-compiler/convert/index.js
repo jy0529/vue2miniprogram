@@ -1,6 +1,7 @@
 const { visit } = require('./visit');
 const { mapping } = require('../config/mapping');
 
+let eventId = 0;
 const WxASTVisitor = {
     tag(node) {
         let tag = node.tag;
@@ -23,7 +24,8 @@ const WxASTVisitor = {
         for(let e in node.events) {
             let v = node.events[e];
             node.events[mapping.events[e]] = {
-                value: v.value,
+                value: 'handleProxy',
+                eventid: eventId,
             }
         }
     }
