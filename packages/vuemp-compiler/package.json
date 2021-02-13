@@ -1,5 +1,5 @@
 {
-  "name": "vuemp-template-compiler",
+  "name": "vuemp-compiler",
   "version": "0.1.0",
   "description": "vue2miniprogram convertor",
   "main": "index.js",

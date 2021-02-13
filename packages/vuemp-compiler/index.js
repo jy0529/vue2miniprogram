@@ -41,8 +41,13 @@ function compile(source)  {
     // script
     const { content: scriptContent } = script;
     // add render function
-    let scriptResult = scriptContent.trim().slice(0, scriptContent.length - 3);
-    scriptResult = `${renderCode}\n${scriptResult}render: render,\n};`
+    let scriptResult = scriptContent.trim().slice(0, scriptContent.length - 2);
+    scriptResult = scriptResult.replace(/\n|\/\/+/g, '').trim();
+    scriptResult = `
+    ${renderCode}\n${scriptResult}
+    ${scriptResult.charAt(scriptResult.length - 1) === ',' ? '' : ','}
+    render: render,\n};
+    `;
     // main entry
     const mainEntry = `
         import Vue from 'vue'; 
