@@ -6449,13 +6449,13 @@
   }
 
   function initDataToMP(page) {
-    page.setData({ $root: { 0: getData$1(this) } });
+    page.setData({ $root: getData$1(this) });
   }
 
   function setDataToMp() {
     var page = this.$mp.page;
     if (this.$mp.mpType === 'page' && page) {
-      page.setData({ $root: { 0: getData$1(this) } });
+      page.setData({ $root: getData$1(this) });
     }
   }
 

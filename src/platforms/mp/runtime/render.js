@@ -22,12 +22,12 @@ function getData(vm) {
 }
 
 export function initDataToMP(page) {
-  page.setData({ $root: { 0: getData(this) } });
+  page.setData({ $root: getData(this) });
 }
 
 export function setDataToMp() {
   const page = this.$mp.page;
   if (this.$mp.mpType === 'page' && page) {
-    page.setData({ $root: { 0: getData(this) } });
+    page.setData({ $root: getData(this) });
   }
 }

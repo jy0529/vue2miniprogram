@@ -55,12 +55,23 @@ function events(astNode) {
     return '';
 }
 
+let templateId = 0;
+function template(astNode) {
+    if (astNode.tag === 'template') {
+        return `name=${templateId++}`;
+    }
+    return '';
+}
+
 function generaterCode(node) {
     let s = '';
     let tag = wxTag(node);
 
     if (tag) {
         s += `<${tag}`;
+
+        const templateStr = template(node);
+        templateStr !== '' && (s += ` ${templateStr}`);
 
         const forStr = wxFor(node);
         forStr !== '' && (s += ` ${forStr}`);

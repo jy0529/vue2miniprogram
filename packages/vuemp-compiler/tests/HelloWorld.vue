@@ -16,6 +16,11 @@ export default {
       items: [],
     };
   },
+  methods: {
+    clickHandler: function() {
+      console.log('clicked')
+    }
+  }
 };
 </script>
 

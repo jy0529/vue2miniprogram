@@ -1,4 +1,3 @@
-
 const compiler = require('vue-template-compiler');
 const { compileTemplate, parse, compileStyle } = require('@vue/component-compiler-utils');
 const { convert } = require('./convert');
@@ -55,7 +54,8 @@ function compile(source)  {
 
     // template
     const { wxast } = convert(ast);
-    const { code: wxml } = codegen(wxast);
+    let { code: wxml } = codegen(wxast);
+    wxml = `<template is="0" data="{{ ...$root }}" />\n<template name="0">\n${wxml}\n</template>`;
 
     return {
         wxml,
